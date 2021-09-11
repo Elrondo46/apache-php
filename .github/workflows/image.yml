@@ -39,7 +39,7 @@ jobs:
           push: true
           tags: |
             tuxnvape/apache-php-redis:latest
-            tuxnvape/apache-php-redis:8.0.9
+            tuxnvape/apache-php-redis:8.0.10
      
         
       - name: Build and push 74
