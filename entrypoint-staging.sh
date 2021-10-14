@@ -15,7 +15,7 @@ wordpress)
     mv wordpress/.* .
     rm -r wordpress
     rm latest.zip
-    sed -i "2 i if ($_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') $_SERVER['HTTPS']='on';" wp-settings.php
+    sed -i '2 i if ($_SERVER["HTTP_X_FORWARDED_PROTO"] == "https") $_SERVER["HTTPS"]="on";' wp-settings.php
     chown -R 33:33 /var/www/html
   fi
     ;;
