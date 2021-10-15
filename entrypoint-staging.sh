@@ -21,16 +21,28 @@ wordpress)
     ;;
 
 drupal)
-  if [ -f /var/www/html/"$FILETEST" ]; then
+  if [ -f /var/www/html/drupal/web/"$FILETEST" ] || [ -f /var/www/html/"$FILETEST" ]; then
     echo "Drupal or another CMS already installed, Install nothing"
   else
-    wget "https://www.drupal.org/download-latest/zip"
-    unzip zip -d /var/www/html
-    mv drupal-* drupal
-    mv drupal/* .
-    mv drupal/.* .
-    rm -r drupal
-    rm zip
+    wget -O composer-setup.php https://getcomposer.org/installer
+    php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+    composer create-project drupal/recommended-project drupal
+    chown -R 33:33 /var/www/html/drupal/web
+    sed -i '116i RewriteBase /' /var/www/html/drupal/web/.htaccess
+    echo "RewriteEngine on" > /var/www/html/drupal/.htaccess
+    echo "RewriteRule (.*) web/\$1 [L]" >> /var/www/html/drupal/.htaccess
+    sed -i 's#/var/www/html#/var/www/html/drupal/web#g' /etc/apache2/sites-enabled/000-default.conf
+   fi
+;;
+
+spip)
+  if [ -f /var/www/html/"$FILETEST" ]; then
+    echo "SPIP or another CMS already installed, Install nothing"
+  else
+    wget "https://files.spip.net/spip/archives/spip-v"$SPIP_VERSION".zip"
+    unzip spip-v"$SPIP_VERSION".zip -d /var/www/html
+    sed -i 's/MyISAM/innodb/g' /var/www/html/ecrire/req/mysql.php
+    mv htaccess.txt .htaccess
     chown -R 33:33 /var/www/html
   fi
 ;;
