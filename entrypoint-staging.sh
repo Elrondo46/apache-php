@@ -23,6 +23,7 @@ wordpress)
 drupal)
   if [ -f /var/www/html/drupal/web/"$FILETEST" ] || [ -f /var/www/html/"$FILETEST" ]; then
     echo "Drupal or another CMS already installed, Install nothing"
+    sed -i 's#/var/www/html#/var/www/html/drupal/web#g' /etc/apache2/sites-enabled/000-default.conf
   else
     wget -O composer-setup.php https://getcomposer.org/installer
     php composer-setup.php --install-dir=/usr/local/bin --filename=composer
