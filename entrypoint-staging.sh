@@ -6,7 +6,7 @@ FILETEST=index.php
 case $CMSVALUE in
 
 wordpress)
-  if [ -f /var/www/html/"$FILETEST" ]; then
+  if [ -f /var/www/html/drupal/web/"$FILETEST" ] || [ -f /var/www/html/"$FILETEST" ]; then
     echo "Wordpress or another CMS already installed, Install nothing"
   else
     wget "https://wordpress.org/latest.zip"
@@ -36,7 +36,7 @@ drupal)
 ;;
 
 spip)
-  if [ -f /var/www/html/"$FILETEST" ]; then
+  if [ -f /var/www/html/drupal/web/"$FILETEST" ] || [ -f /var/www/html/"$FILETEST" ]; then
     echo "SPIP or another CMS already installed, Install nothing"
   else
     wget "https://files.spip.net/spip/archives/spip-v"$SPIP_VERSION".zip"
