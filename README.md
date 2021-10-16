@@ -1,10 +1,10 @@
 # apache-php
 
 Docker Image of Apache with:
-* Ready to use apache custom site with PHP
-* Ready to connect with Redis
-* Ready to connect to SMTP
-* Selectable CMS with Wordpress, Drupal, SPIP (Staging but usable)
+  * Ready to use apache custom site with PHP
+  * Ready to connect with Redis
+  * Ready to connect to SMTP
+  * Selectable CMS with Wordpress, Drupal, SPIP (Staging but usable)
 
 ## Example of Docker Composer file in Generic Use (tag latest or staging)
 ```yaml
@@ -103,13 +103,13 @@ volumes:
   db_data:
 ```
 
-## Why you choose http port and not https ?
+## Why you choose http port and not https
 Better using nginx-proxy or other proxy and link it directly to the www container.
 
-## Can I select different PHP versions ?
+## Can I select different PHP versions
 Yes, watch the tags in Docker Hub page
 
-## Multi-Arch support ?
+## Multi-Arch support
 Yes, amd64, armv7 and arm64 but only for stable. Stable CMS selector version soon in all supported archs.
 
 ## About Wordpress
