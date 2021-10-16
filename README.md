@@ -84,7 +84,7 @@ services:
       - SMTP_FROM=toto@test.fr
       - SMTP_HOST=container_mail
       - SMTP_PORT=587
-      - CMS=wordpress #you can choose between three CMS (wordpress, drupal or SPIP)
+      - CMS=wordpress #you can choose between three CMS (wordpress, drupal, SPIP or DotClear)
   
   redis:
     image: redis:latest
@@ -115,6 +115,9 @@ Yes, amd64, armv7 and arm64 but only for stable. Stable CMS selector version soo
 
 ## About Wordpress
 Wordpress is fully pre-patched for HTTPS
+
+## About DotClear
+Fully functionnal in vanilla version, last version installed
 
 ## About Drupal
 Tested install full sucessfull with latest version, all install mode are supported.
