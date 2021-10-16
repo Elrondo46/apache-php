@@ -3,7 +3,8 @@ FROM php:7.4-apache
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update
-RUN apt-get install -y locales locales-all
+RUN apt-get install -y locales locales-all && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
 
 # persistent dependencies
 RUN set -eux; \
@@ -16,7 +17,6 @@ RUN set -eux; \
 
 # install the PHP extensions we need (https://make.wordpress.org/hosting/handbook/handbook/server-environment/#php-extensions)
 RUN set -ex; \
-	\
 	savedAptMark="$(apt-mark showmanual)"; \
 	\
 	apt-get update; \
