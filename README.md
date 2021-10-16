@@ -1,10 +1,10 @@
 # apache-php
 
 Docker Image of Apache with:
-    * Ready to use apache custom site with PHP
-    * Ready to connect with Redis
-    * Ready to connect to SMTP
-    * Selectable CMS with Wordpress, Drupal, SPIP (Staging but usable)
+   * Ready to use apache custom site with PHP
+   * Ready to connect with Redis
+   * Ready to connect to SMTP
+   * Selectable CMS with Wordpress, Drupal, SPIP (Staging but usable)
 
 ## Example of Docker Composer file in Generic Use (tag latest or staging)
 ```yaml
