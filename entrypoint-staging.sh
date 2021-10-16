@@ -48,6 +48,19 @@ spip)
   fi
 ;;
 
+dotclear)
+  if [ -f /var/www/html/drupal/web/"$FILETEST" ] || [ -f /var/www/html/"$FILETEST" ]; then
+    echo "DotClear or another CMS already installed, Install nothing"
+  else
+   wget "https://download.dotclear.net/latest.zip"
+   unzip latest.zip -d /var/www/html
+   mv dotclear/* .
+   mv dotclear/.* .
+   rm -r dotclear
+   chown -R 33:33 /var/www/html
+  fi
+;;
+
 *)
   echo "No CMS Detected, continue without CMS but you can define this variable later"
 esac
