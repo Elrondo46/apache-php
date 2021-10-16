@@ -2,8 +2,7 @@ FROM php:7.4-apache
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update
-RUN apt-get install -y locales locales-all && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y locales locales-all && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # persistent dependencies
 RUN set -eux; \
