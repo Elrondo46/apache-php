@@ -4,7 +4,7 @@ Docker Image of Apache with:
 
 -   Ready to connect with Redis
 -   Ready to connect to SMTP
--   Selectable CMS with Wordpress, Drupal, SPIP (Staging but usable) 
+-   Selectable CMS with Wordpress, Drupal, SPIP and DotClear (Staging but usable) 
 -   Ready to use apache custom site with PHP
 
 ## Example of Docker Composer file in Generic Use (tag latest or staging)
