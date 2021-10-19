@@ -2,7 +2,8 @@ FROM php:7.4-apache
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update && apt-get install -y locales locales-all && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apt-get update
+RUN apt-get install -y locales locales-all
 
 # persistent dependencies
 RUN set -eux; \
@@ -15,6 +16,7 @@ RUN set -eux; \
 
 # install the PHP extensions we need (https://make.wordpress.org/hosting/handbook/handbook/server-environment/#php-extensions)
 RUN set -ex; \
+	\
 	savedAptMark="$(apt-mark showmanual)"; \
 	\
 	apt-get update; \
@@ -36,7 +38,7 @@ RUN set -ex; \
         pdo_mysql \
 		zip \
 	; \
-	pecl install imagick-3.4.4; \
+	pecl install imagick; \
 	pecl install redis; \
 	docker-php-ext-enable imagick; \
 	docker-php-ext-enable redis; \
@@ -100,6 +102,8 @@ RUN set -eux; \
 # (replace all instances of "%h" with "%a" in LogFormat)
 	find /etc/apache2 -type f -name '*.conf' -exec sed -ri 's/([[:space:]]*LogFormat[[:space:]]+"[^"]*)%h([^"]*")/\1%a\2/g' '{}' +
 
+ENV CMS ""
+ENV SPIP_VERSION ""
 ENV SMTP_FROM ""
 ENV SMTP_HOST ""
 ENV SMTP_PORT 25
@@ -109,11 +113,11 @@ ENV SMTP_STARTTLS "off"
 ENV SMTP_USERNAME ""
 ENV SMTP_PASSWORD ""
 
-RUN apt-get update && apt-get install -q -y msmtp msmtp-mta unzip wget && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -q -y msmtp msmtp-mta wget unzip && rm -rf /var/lib/apt/lists/*
 
 COPY wascardev-php.ini /usr/local/etc/php/conf.d/
 
 VOLUME /var/www/html
 
-COPY entrypoint.sh /
+COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT [ "/entrypoint.sh" ]

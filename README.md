@@ -4,57 +4,10 @@ Docker Image of Apache with:
 
 -   Ready to connect with Redis
 -   Ready to connect to SMTP
--   Selectable CMS with Wordpress, Drupal, SPIP and DotClear (Staging but usable) 
+-   Selectable CMS with Wordpress, Drupal, SPIP and DotClear 
 -   Ready to use apache custom site with PHP
 
-## Example of Docker Composer file in Generic Use (tag latest or staging)
-```yaml
-version: "3"
-
-services:
-
-  db:
-    image: mariadb:latest
-    restart: always
-    volumes:
-      - "db_data:/var/lib/mysql"
-    environment:
-      - MYSQL_DATABASE=test
-      - MYSQL_USER=test
-      - MYSQL_PASSWORD=test
-      - MYSQL_ROOT_PASSWORD=test
-  
-  www:
-    image: tuxnvape/apache-php-redis:stable
-    restart: always
-    volumes:
-      - "www_data:/var/www/html"
-    ports:
-      - 80:80
-    environment:
-      - SMTP_FROM=toto@test.fr
-      - SMTP_HOST=container_mail
-      - SMTP_PORT=587
-  
-  redis:
-    image: redis:latest
-    restart: always
-  
-  mail:
-    image: boky/postfix
-    restart: always
-    environment:
-      RELAYHOST: smtp.realserver.fr
-      RELAYHOST_USERNAME: "test"
-      RELAYHOST_PASSWORD: "test"
-      MYNETWORKS: "172.1.0.0/16"
-      
-volumes:
-  www_data:
-  db_data:
-```
-
-## Example of Docker Composer file with CMS select (Staging ONLY)
+## Example of Docker Composer file
 ```yaml
 version: "3"
 
@@ -110,7 +63,7 @@ Better using nginx-proxy or other proxy and link it directly to the www containe
 Yes, watch the tags in Docker Hub page
 
 ## Multi-Arch support
-Yes, amd64, armv7 and arm64 but only for stable. Stable CMS selector version soon in all supported archs.
+Yes, amd64, armv7 and arm64.
 
 ## About Wordpress
 Wordpress is fully pre-patched for HTTPS
