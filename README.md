@@ -36,7 +36,7 @@ services:
       - SMTP_FROM=toto@test.fr
       - SMTP_HOST=container_mail
       - SMTP_PORT=587
-      - CMS=wordpress #you can choose between three CMS (wordpress, drupal, SPIP or DotClear)
+      - CMS=wordpress #you can choose between four CMS (wordpress, drupal, SPIP or DotClear)
   
   redis:
     image: redis:latest
