@@ -40,7 +40,7 @@ spip)
   if [ -f /var/www/html/drupal/web/"$FILETEST" ] || [ -f /var/www/html/"$FILETEST" ]; then
     echo "SPIP or another CMS already installed, Install nothing"
   else
-    wget "https://files.spip.net/spip/archives/spip-v"$SPIP_VERSION".zip"
+    wget "https://files.spip.net/spip/archives/spip-v$SPIP_VERSION.zip"
     unzip spip-v"$SPIP_VERSION".zip -d /var/www/html
     sed -i 's/MyISAM/innodb/g' /var/www/html/ecrire/req/mysql.php
     mv htaccess.txt .htaccess
