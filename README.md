@@ -16,7 +16,7 @@ services:
   db:
     image: mariadb:latest
     restart: always
-    volume:
+    volumes:
       - "db_data:/var/lib/mysql"
     environment:
       - MYSQL_DATABASE=test
@@ -25,11 +25,10 @@ services:
       - MYSQL_ROOT_PASSWORD=test
   
   www:
-    image: apache-php-redis:staging
+    image: tuxnvape/apache-php-redis:stable
     restart: always
     volumes:
       - "www_data:/var/www/html"
-    restart: always
     ports:
       - 80:80
     environment:
@@ -64,7 +63,7 @@ services:
   db:
     image: mariadb:latest
     restart: always
-    volume:
+    volumes:
       - "db_data:/var/lib/mysql"
     environment:
       - MYSQL_DATABASE=test
@@ -73,7 +72,7 @@ services:
       - MYSQL_ROOT_PASSWORD=test
   
   www:
-    image: apache-php-redis:staging
+    image: tuxnvape/apache-php-redis:staging
     restart: always
     volumes:
       - "www_data:/var/www/html"
