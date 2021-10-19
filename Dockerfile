@@ -10,7 +10,11 @@ RUN set -eux; \
 	apt-get update; \
 	apt-get install -y --no-install-recommends \
 # Ghostscript is required for rendering PDF previews
-		ghostscript \
+		ghostscript \ 
+		msmtp \
+		msmtp-mta \
+		wget \ 
+		unzip \
 	; \
 	rm -rf /var/lib/apt/lists/*
 
@@ -112,8 +116,6 @@ ENV SMTP_TLS "off"
 ENV SMTP_STARTTLS "off"
 ENV SMTP_USERNAME ""
 ENV SMTP_PASSWORD ""
-
-RUN apt-get update && apt-get install -q -y msmtp msmtp-mta wget unzip && rm -rf /var/lib/apt/lists/*
 
 COPY wascardev-php.ini /usr/local/etc/php/conf.d/
 
