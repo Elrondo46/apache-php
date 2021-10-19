@@ -2,13 +2,12 @@ FROM php:7.4-apache
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update
-RUN apt-get install -y locales locales-all
-
 # persistent dependencies
 RUN set -eux; \
 	apt-get update; \
 	apt-get install -y --no-install-recommends \
+	        locales \ 
+		locales-all \
 # Ghostscript is required for rendering PDF previews
 		ghostscript \ 
 		msmtp \
