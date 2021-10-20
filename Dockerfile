@@ -6,14 +6,14 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN set -eux; \
 	apt-get update; \
 	apt-get install -y --no-install-recommends \
-	        locales \ 
-		locales-all \
+	        locales=* \ 
+		locales-all=* \
 # Ghostscript is required for rendering PDF previews
-		ghostscript \ 
-		msmtp \
-		msmtp-mta \
-		wget \ 
-		unzip \
+		ghostscript=* \ 
+		msmtp=* \
+		msmtp-mta=* \
+		wget=* \ 
+		unzip=* \
 	; \
 	rm -rf /var/lib/apt/lists/*
 
@@ -24,11 +24,11 @@ RUN set -ex; \
 	\
 	apt-get update; \
 	apt-get install -y --no-install-recommends \
-		libfreetype6-dev \
-		libjpeg-dev \
-		libmagickwand-dev \
-		libpng-dev \
-		libzip-dev \
+		libfreetype6-dev=* \
+		libjpeg-dev=* \
+		libmagickwand-dev=* \
+		libpng-dev=* \
+		libzip-dev=* \
 	; \
 	\
 	docker-php-ext-configure gd --with-freetype --with-jpeg; \
