@@ -20,6 +20,25 @@ wordpress)
   fi
     ;;
 
+wordpress_hardening)
+  if [ -f /var/www/html/drupal/web/"$FILETEST" ] || [ -f /var/www/html/"$FILETEST" ]; then
+    echo "Wordpress or another CMS already installed, Install nothing"
+  else
+    wget "https://raw.githubusercontent.com/Elrondo46/apache-php/master/hardening/phptest.sh"
+    sh phptest.sh
+    rm phptest.sh
+    cd /var/www/html
+    wget "https://wordpress.org/latest.zip"
+    unzip '*.zip' -d /var/www/html
+    mv wordpress/* .
+    mv wordpress/.* .
+    rm -r wordpress
+    rm latest.zip
+    sed -i '2 i if ($_SERVER["HTTP_X_FORWARDED_PROTO"] == "https") $_SERVER["HTTPS"]="on";' wp-settings.php
+    chown -R 33:33 /var/www/html
+    fi
+    ;;
+
 drupal)
   if [ -f /var/www/html/drupal/web/"$FILETEST" ] || [ -f /var/www/html/"$FILETEST" ]; then
     echo "Drupal or another CMS already installed, Install nothing"
