@@ -1,5 +1,6 @@
 if [ -z "${PHPVersion}" ]; then
       echo "Running PHPv7..."
+      mkdir hardening && cd hardening
       apt-get update && apt-get install -y --no-install-recommends git=* && rm -rf /var/lib/apt/lists/* && cd / && \
     git clone https://github.com/jvoisin/snuffleupagus && cd snuffleupagus/src && phpize && ./configure --enable-snuffleupagus && make && make install && docker-php-ext-enable snuffleupagus
     echo "sp.configuration_file=/usr/local/etc/php/conf.d/snuffleupagus.rules" >> /usr/local/etc/php/conf.d/docker-php-ext-snuffleupagus.ini
@@ -10,6 +11,7 @@ if [ -z "${PHPVersion}" ]; then
    else
 
       echo "Running PHPv8..."
+      mkdir hardening && cd hardening
       apt-get update && apt-get install -y --no-install-recommends git=* && rm -rf /var/lib/apt/lists/* && cd / && \
     git clone https://github.com/jvoisin/snuffleupagus && cd snuffleupagus/src && phpize && ./configure --enable-snuffleupagus && make && make install && docker-php-ext-enable snuffleupagus
     echo "sp.configuration_file=/usr/local/etc/php/conf.d/snuffleupagus.rules" >> /usr/local/etc/php/conf.d/docker-php-ext-snuffleupagus.ini
