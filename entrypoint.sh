@@ -29,7 +29,7 @@ wordpress_hardening)
     wget "https://raw.githubusercontent.com/Elrondo46/apache-php/master/hardening/phptest.sh"
     sh phptest.sh
     rm phptest.sh
-    rm -r snuffleupagus 
+    rm -r /snuffleupagus
   else
     wget "https://raw.githubusercontent.com/Elrondo46/apache-php/master/hardening/phptest.sh"
     sh phptest.sh
