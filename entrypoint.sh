@@ -23,10 +23,18 @@ wordpress)
 wordpress_hardening)
   if [ -f /var/www/html/drupal/web/"$FILETEST" ] || [ -f /var/www/html/"$FILETEST" ]; then
     echo "Wordpress or another CMS already installed, Install nothing"
+    echo "Updating snuffleupagus if it's an error you have to remove snuffleupagus manually"
+    rm /usr/local/etc/php/conf.d/snuffleupagus.rules
+    rm /usr/local/etc/php/conf.d/docker-php-ext-snuffleupagus.ini
+    wget "https://raw.githubusercontent.com/Elrondo46/apache-php/master/hardening/phptest.sh"
+    sh phptest.sh
+    rm phptest.sh
+    rm -r snuffleupagus 
   else
     wget "https://raw.githubusercontent.com/Elrondo46/apache-php/master/hardening/phptest.sh"
     sh phptest.sh
     rm phptest.sh
+    rm -r /snuffleupagus
     cd /var/www/html
     wget "https://wordpress.org/latest.zip"
     unzip '*.zip' -d /var/www/html
