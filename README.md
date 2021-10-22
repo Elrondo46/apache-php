@@ -27,7 +27,7 @@ services:
       - MYSQL_ROOT_PASSWORD=test
   
   www:
-    image: tuxnvape/apache-php-redis:staging
+    image: tuxnvape/apache-php-redis:latest
     restart: always
     volumes:
       - "www_data:/var/www/html"
