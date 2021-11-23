@@ -2,7 +2,7 @@
 
 # apache-php
 
-WARNING: PLEASE NOTE THIS PROJECT WILL BE ARCHIVED AND FILES MOVED TO MULTICMS. IL STAY ON GITHUB AND DOCKER HUB, JUST CHANGE OF REPOSITORY. IT WILL DONE IN ONE MONTH.
+WARNING: PLEASE NOTE THIS PROJECT IS ARCHIVED NEXT HERE: https://github.com/Elrondo46/multicms and here https://hub.docker.com/r/tuxnvape/multicms
 
 https://multicms.fr
 
